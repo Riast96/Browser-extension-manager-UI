@@ -1,0 +1,374 @@
+:root {
+    --main-bg-color: linear-gradient(180deg, #EBF2FC 0%, #EEF8F9 100%);
+    --card-bg-color: #fcfdff;
+    --card-border-color: #dce0eb;
+    --color-toggle: #eeeeee;
+    --color-toggle-hover: #c6c5ca;
+    --button-bg-color: #fcfdff;
+    --button-bg-color-hover: #f6f9ff;
+    --button-bg-color-selected: #f35c55;
+    --button-bg-color-selected-hover: #df4841;
+    --button-remove-bg-color: #ca211c;
+    --text-principal-color: #0a1542;
+    --text-secundary-color: #f9fafc;
+    --svg-primary-color: #0a1236;
+    --checkbox-bg-color: #c9c9c9;
+    --checkbox-bg-color-active: #c52219;
+    --checkbox-bg-color-active-hover: #e04741;
+
+}
+
+.dark-mode {
+    --main-bg-color: linear-gradient(180deg, #040918 0%, #091540 100%);
+    --card-bg-color: #1f2535;
+    --card-border-color: #52576b;
+    --color-toggle: #2f354b;
+    --color-toggle-hover: #53586c;
+    --button-bg-color: #1f2535;
+    --button-bg-color-hover: #2f354b;
+    --button-bg-color-selected: #f35c55;
+    --button-bg-color-selected-hover: #df4841;
+    --button-remove-bg-color: #f15d53;
+    --text-principal-color: #f9fafc;
+    --text-secundary-color: #0a1542;
+    --svg-primary-color: #f9ffff;
+    --checkbox-bg-color: #555b6b;
+    --checkbox-bg-color-active: #c52219;
+    --checkbox-bg-color-active-hover: #e04741;
+}
+
+@font-face {
+    font-family: 'NotoSans';
+    src: url(../fonts/NotoSans-VariableFont_wdth\,wght.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100vw;
+    min-height: 100vh;
+    box-sizing: border-box;
+    color: var(--text-principal-color);
+    padding: 1.5rem 1rem;
+    transition: all 0.3s ease;
+    font-family: 'NotoSans', sans-serif;
+    position: relative;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+body::after {
+    content: '';
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background: var(--main-bg-color);
+    z-index: -1;
+    top: 0;
+    left: 0;
+}
+
+
+header {
+    width: calc(100% - 14rem);
+    min-width: 328px;
+    margin: 0 auto 0 auto;
+    height: 66px;
+    display: flex;
+    border-radius: 0.8rem;
+    background-color: var(--card-bg-color);
+    justify-content: start;
+    align-items: center;
+    position: relative;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.103);
+}
+
+.textLogo {
+    fill: var(--svg-primary-color);
+}
+
+.svgColor {
+    stroke: var(--svg-primary-color);
+}
+
+#toggleMode svg:last-child {
+    display: none;
+}
+
+.dark-mode #toggleMode svg:first-child {
+    display: none;
+}
+
+.dark-mode #toggleMode svg:last-child {
+    display: block;
+}
+
+header button {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    right: 0;
+    margin: 0.5rem;
+    border: none;
+    border-radius: 0.6rem;
+    background-color: var(--color-toggle);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header button:hover {
+    background-color: var(--color-toggle-hover);
+}
+
+header button:focus-visible {
+    outline: 2px solid var(--button-bg-color-selected);
+    outline-offset: 2px;
+}
+
+.filter {
+    width: calc(100% - 14rem);
+    min-width: 328px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem auto 2.5rem auto;
+    gap: 1rem;
+    box-sizing: border-box;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    min-width: 239px;
+}
+
+.filterExtension {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 280px;
+}
+
+.filterExtension button {
+    height: 2.8rem;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1.2rem;
+    border-radius: 1.7rem;
+    color: var(--text-principal-color);
+    font-family: 'NotoSans', sans-serif;
+    font-weight: 500;
+    border: 0.5px solid var(--card-border-color);
+    background-color: var(--button-bg-color);
+    box-sizing: border-box;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.116);
+}
+
+.filterExtension .activeBtn {
+    border: 0.5px solid var(--button-bg-color-selected);
+    background-color: var(--button-bg-color-selected);
+    color: var(--text-secundary-color);
+}
+
+.filterExtension .activeBtn:hover {
+    border: 0.5px solid var(--button-bg-color-selected-hover);
+    background-color: var(--button-bg-color-selected-hover);
+    color: var(--text-secundary-color);
+}
+
+.filterExtension button:hover {
+    border: 0.5px solid var(--button-bg-color-hover);
+    background-color: var(--button-bg-color-hover);
+    color: var(--text-principal-color);
+}
+
+.filterExtension button:focus-visible {
+    outline: 2px solid var(--button-bg-color-selected);
+    outline-offset: 2px;
+}
+
+.extensionsList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 328px);
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 2rem;
+    width: calc(100% - 14rem);
+    min-width: 328px;
+    gap: 1rem;
+}
+
+.extCard {
+    background-color: var(--card-bg-color);
+    height: 200px;
+    min-width: 328px;
+    max-width: 380px;
+    padding: 1rem;
+    border: 0.5px solid var(--card-border-color);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    box-sizing: border-box;
+}
+
+.extDetails {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: start;
+    align-items: start;
+}
+
+.extText {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.extName {
+    font-size: 1.2rem;
+}
+
+.extDescription {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.extButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.extButtons button {
+    background-color: var(--button-bg-color);
+    width: 90px;
+    height: 38px;
+    padding: 0.5rem;
+    border-radius: 1.2rem;
+    font-size: 13px;
+    font-weight: 600;
+    box-sizing: border-box;
+    border: 1px solid var(--card-border-color);
+    color: var(--text-principal-color);
+}
+
+.extButtons button:hover {
+    background-color: var(--button-remove-bg-color);
+    color: var(--text-secundary-color);
+}
+
+.extButtons button:focus-visible {
+    background-color: var(--button-remove-bg-color);
+    outline: 2px solid var(--button-bg-color-selected);
+    outline-offset: 2px;
+    color: var(--text-secundary-color);
+}
+
+.checkbox-wrapper .ikxBAC {
+    appearance: none;
+    background-color: #dfe1e4;
+    border-radius: 72px;
+    border-style: none;
+    flex-shrink: 0;
+    height: 21px;
+    margin: 0;
+    position: relative;
+    width: 35px;
+}
+
+.checkbox-wrapper .ikxBAC::before {
+    bottom: -6px;
+    content: "";
+    left: -6px;
+    position: absolute;
+    right: -6px;
+    top: -6px;
+}
+
+.checkbox-wrapper .ikxBAC,
+.checkbox-wrapper .ikxBAC::after {
+    transition: all 100ms ease-out;
+}
+
+.checkbox-wrapper .ikxBAC::after {
+    background-color: #fff;
+    border-radius: 50%;
+    content: "";
+    height: 14px;
+    left: 3px;
+    position: absolute;
+    top: 4px;
+    width: 14px;
+}
+
+.checkbox-wrapper input[type=checkbox] {
+    cursor: default;
+}
+
+.checkbox-wrapper .ikxBAC:hover {
+    background-color: var(--checkbox-bg-color);
+    transition-duration: 0s;
+}
+
+.checkbox-wrapper .ikxBAC:checked {
+    background-color: var(--checkbox-bg-color-active);
+}
+
+.checkbox-wrapper .ikxBAC:checked::after {
+    background-color: #fff;
+    left: 17px;
+}
+
+.checkbox-wrapper :focus-visible {
+    outline: 2px solid var(--button-bg-color-selected);
+    outline-offset: 2px;
+}
+
+.checkbox-wrapper .ikxBAC:checked:hover {
+    background-color: var(--checkbox-bg-color-active-hover);
+}
+
+.attribution{
+    text-align: center;
+    justify-self: flex-end;
+    align-self: center;
+    margin-top: auto;
+}
+
+.attribution a{
+    color: var(--text-principal-color);
+}
+
+@media (min-width: 636px) {
+    .filter{
+        margin: 4rem auto 2rem auto;
+    }
+    .extensionsList {
+        grid-template-columns: repeat(auto-fit, 380px);
+        transition: all 0.3s ease;
+    }
+}
+
+@media (min-width: 830px) {
+    .filter {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
